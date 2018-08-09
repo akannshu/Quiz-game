@@ -1,11 +1,4 @@
 var questions = ['1+4=?' , '1+7=?' , '4-3=?' , '8-5=?'];
-function right(){
-   alert('your answer is right.');
-}
-
-function worng(){
-   alert('your answer is wrong');
-}
 
 function afunc(){
    document.getElementById("ques").innerHTML = questions[0];
@@ -14,24 +7,38 @@ function afunc(){
 function bfunc(i){
   var c = i+1;
   var d = questions.length;
-  if(c>d){
-    document.getElementById("ques").innerHTML = "Quiz ends here";
-  }
   document.getElementById("ques").innerHTML = questions[c];
   ans();
 }
 
+function cfunc(i){
+  var c = i-1;
+  var d = questions.length;
+  document.getElementById("ques").innerHTML = questions[c];
+  ans();
+}
 function Next(){
     var i = 0;
     var c = questions.length;
 
     for(i; i<c; i++){
       if(document.getElementById("ques").innerHTML === questions[i]){
-
         bfunc(i);
         break;
       }
    }
+}
+
+function previous(){
+  var i = 0;
+  var c = questions.length;
+
+  for(i; i<c; i++){
+    if(document.getElementById("ques").innerHTML === questions[i]){
+      cfunc(i);
+      break;
+    }
+ }
 }
 
 function ans(){
@@ -87,6 +94,7 @@ function ans(){
            }
          }
          document.body.appendChild(opt4);
+
    }
 
   else if(document.getElementById("ques").innerHTML === "1+7=?"){
@@ -251,4 +259,7 @@ function ans(){
          document.body.appendChild(opt4);
    }
 
+   else{
+     document.getElementById("ques").innerHTML="Quiz ends here.";
+   }
 }
